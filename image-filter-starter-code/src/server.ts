@@ -36,7 +36,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).send({ message: 'image url is unreachable' });
+      res.status(422).send({ message: 'unable to process image url' });
     });
   });
 
