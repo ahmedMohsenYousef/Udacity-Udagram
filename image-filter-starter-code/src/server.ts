@@ -29,8 +29,12 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       
       console.log("Finished filtering image, sending file...");
       res.sendFile(filterOutput, (error)=>{
-  
-        console.log("Finished sending", error);
+      
+        console.log("Finished sending, deleting local tmp files...");
+
+        if(error)
+          console.log("Finished sending with error: ", error);
+          
         deleteLocalFiles([filterOutput]);
       });
     })
@@ -42,7 +46,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
   // Root Endpoint
   // Displays a simple message to the user
-  app.get( "/abc", async ( req, res ) => {
+  app.get( "/", async ( req, res ) => {
     res.send("try GET /filteredimage?image_url={{}}")
   } );
   
